@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriTrack | Smart AI Diet Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <a href="#top" class="nav-item" id="navHome" title="Home">
+            <span class="icon">🏠</span>
+            <span class="label">Home</span>
+        </a>
+        <a href="#plans" class="nav-item" id="navPlans" title="My Plans">
+            <span class="icon">📝</span>
+            <span class="label">My Plans</span>
+        </a>
+        <a href="#setup" class="nav-item" id="navProfile" title="Profile">
+            <span class="icon">👤</span>
+            <span class="label">Profile</span>
+        </a>
+    </nav>
+    <header class="hero" id="top">
+        <div class="hero-content">
+            <h1>NutriTrack Health</h1>
+            <p>Personalized daily nutrition plans for better health and performance</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <form id="dietForm" class="card" aria-label="Plan setup" >
+            <h2 id="setup">Plan Setup</h2>
+            <div class="grid">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="number" name="age" placeholder="Age" required>
+                <select name="sex"><option>Male</option><option>Female</option></select>
+                <input type="number" name="height" placeholder="Height (cm)" required>
+                <input type="number" name="weight" placeholder="Weight (kg)" required>
+                <div>
+                    <div style="font-size:12px;color:#64748b;margin:0 0 6px;">Activity level</div>
+                    <select name="activity">
+                        <option>Mostly sitting</option>
+                        <option>Some movement</option>
+                        <option>Regular exercise</option>
+                        <option>Very active</option>
+                        <option>Athlete</option>
+                    </select>
+                </div>
+                <div>
+                    <div style="font-size:12px;color:#64748b;margin:0 0 6px;">Goal</div>
+                    <select name="goal" id="goal">
+                        <option>Lose Fat</option>
+                        <option selected>Maintain</option>
+                        <option>Gain Muscle</option>
+                        <option>Gain Weight</option>
+                    </select>
+                </div>
+                <div>
+                    <div style="font-size:12px;color:#64748b;margin:0 0 6px;">Diet type</div>
+                    <select name="diet">
+                        <option>Non-Vegetarian</option>
+                        <option>Vegetarian</option>
+                        <option>Vegan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="actions">
+                <button type="button" id="autoGoal">📊 Check My BMI</button>
+                <button type="submit" class="primary">Generate My Plan 🚀</button>
+            </div>
+        </form>
+
+        <div id="output" class="card" aria-live="polite" aria-label="Plans"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <img src="https://images.unsplash.com/photo-1514995669114-b7d22f0ad7a0?q=80&w=1200&auto=format&fit=crop" alt="Healthy food" class="footer-img">
+            <p>Built for Fundamentals of Artificial Intelligence — smarter nutrition for everyone.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

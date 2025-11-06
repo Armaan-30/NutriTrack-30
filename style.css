@@ -1,0 +1,351 @@
+/* --- Global Styles --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+
+    /* 🖤 Dark gradient background */
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #e5e5e5;
+    min-height: 100vh;
+}
+
+/* 🧊 Compact frosted-glass sidebar (dark glass version) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 100;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* 🪄 Magic pseudo-element for real frosted blur */
+.sidebar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(25, 25, 25, 0.45);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: -1;
+}
+
+/* Sidebar items */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #e5e5e5;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    transition: 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+.nav-item .icon {
+    font-size: 20px;
+}
+
+.nav-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Shift main content right */
+.hero, .container, .footer {
+    margin-left: 100px;
+}
+
+/* --- Container + Form --- */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 3rem auto;
+    background: rgba(30, 30, 30, 0.7);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.subtitle {
+    text-align: center;
+    color: #a1a1a1;
+    margin-bottom: 20px;
+}
+
+/* 🧱 Form grid layout — evenly spaced, non-colliding */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* ✅ Align "Activity Level" and "Diet Type" side-by-side automatically */
+.grid > div:nth-last-child(-n+3) {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+.grid > div:nth-last-child(-n+3) > div {
+    flex: 1;
+    min-width: 220px;
+}
+
+/* 🧩 Uniform input & select fields */
+.grid input,
+.grid select {
+    width: 100%;
+    height: 48px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #f1f1f1;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+/* Highlight input focus */
+.grid input:focus,
+.grid select:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Inline label/diet controls */
+.diet-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.diet-label {
+    font-size: 14px;
+    color: #d1d5db;
+}
+
+.diet-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f1f1f1;
+}
+
+/* Make selects uniform height when inline */
+.grid > div > select {
+    height: 48px;
+}
+
+/* 🧭 Custom dropdown arrow for select boxes */
+select {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: rgba(255, 255, 255, 0.08)
+        url('data:image/svg+xml;utf8,<svg fill="white" height="10" viewBox="0 0 24 24" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+        no-repeat right 12px center;
+    background-size: 12px;
+    color: #f1f1f1;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+/* 🖤 Dropdown menu (options) */
+select option {
+    background-color: #1c1c1c;
+    color: #f1f1f1;
+}
+
+/* ✨ Remove old arrows and focus styles */
+select::-ms-expand {
+    display: none;
+}
+
+select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(50, 50, 50, 0.95);
+}
+
+/* --- Buttons --- */
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(135deg, #2b2b2b, #4b4b4b);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #444, #666);
+}
+
+/* --- Cards --- */
+.card {
+    margin-top: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    min-height: 70vh;
+    color: #fff;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 8vh;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                      url('https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-content {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero h1 {
+    margin: 0 0 .5rem 0;
+    font-size: 3.8rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    text-transform: uppercase;
+}
+
+.hero p {
+    margin: 0;
+    opacity: .95;
+    font-size: 1.3rem;
+    color: #d1d5db;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    letter-spacing: 0.5px;
+}
+
+/* --- Footer --- */
+.footer {
+    margin-top: 3rem;
+    padding: 2rem 1rem;
+    background: #0b0b0b;
+    color: #ccc;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-inner {
+    width: 92%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    opacity: .9;
+}
+/* 🧭 Custom dropdown arrow for Activity Level, Goal, and Diet Type */
+select[name="activity"],
+select[name="goal"],
+select[name="diet"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    background: rgba(255, 255, 255, 0.08)
+        url('data:image/svg+xml;utf8,<svg fill="white" height="12" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+        no-repeat right 12px center;
+    background-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px 32px 10px 12px;
+    color: #f1f1f1;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* 🖤 Dropdown hover and focus effect */
+select[name="activity"]:hover,
+select[name="goal"]:hover,
+select[name="diet"]:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+select[name="activity"]:focus,
+select[name="goal"]:focus,
+select[name="diet"]:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ⚙️ Dropdown options styling */
+select[name="activity"] option,
+select[name="goal"] option,
+select[name="diet"] option {
+    background: #1c1c1c;
+    color: #f1f1f1;
+}
